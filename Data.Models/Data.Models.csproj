@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC87515B-C121-4D06-A6B3-180204F4D87B}</ProjectGuid>
+    <ProjectGuid>{DE4255C5-3948-468C-9BBE-593B546D05AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Data.DB</RootNamespace>
-    <AssemblyName>Data.DB</AssemblyName>
+    <RootNamespace>Data.Models</RootNamespace>
+    <AssemblyName>Data.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="SqlSugar, Version=5.0.0.10, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\sqlSugar.5.0.0.10\lib\SqlSugar.dll</HintPath>
     </Reference>
@@ -46,31 +48,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonDB\APP_Reguser.cs" />
-    <Compile Include="DbContext.cs" />
+    <Compile Include="GenerateEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YBJDB\Employee.cs" />
-    <Compile Include="YBJDB\WebHouse.cs" />
-    <Compile Include="YBJDB\WebHousePic.cs" />
-    <Compile Include="YBJDB\WebHouse_Other.cs" />
-    <Compile Include="YBJ_NewWebDB\House.cs" />
-    <Compile Include="YBJ_NewWebDB\HousePic.cs" />
-    <Compile Include="YBJ_NewWebDB\House_Other.cs" />
-    <Compile Include="YBJ_NewWebDB\KXF_Staff.cs" />
+    <Compile Include="AllModels.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AllModels.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AllModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AllModels.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Data.Tool\Data.Tool.csproj">
-      <Project>{17CF58B0-D4B1-4964-BC17-B675EA759AEA}</Project>
-      <Name>Data.Tool</Name>
+    <ProjectReference Include="..\Data.DB\Data.DB.csproj">
+      <Project>{AC87515B-C121-4D06-A6B3-180204F4D87B}</Project>
+      <Name>Data.DB</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CommonManager\" />
-    <Folder Include="YBJManager\" />
-    <Folder Include="YBJ_NewManager\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

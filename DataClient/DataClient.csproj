@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC87515B-C121-4D06-A6B3-180204F4D87B}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Data.DB</RootNamespace>
-    <AssemblyName>Data.DB</AssemblyName>
+    <ProjectGuid>{3EF6BF3C-E6D2-4126-BAE8-900FBF76C533}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DataClient</RootNamespace>
+    <AssemblyName>DataClient</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,11 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SqlSugar, Version=5.0.0.10, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\sqlSugar.5.0.0.10\lib\SqlSugar.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,31 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonDB\APP_Reguser.cs" />
-    <Compile Include="DbContext.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YBJDB\Employee.cs" />
-    <Compile Include="YBJDB\WebHouse.cs" />
-    <Compile Include="YBJDB\WebHousePic.cs" />
-    <Compile Include="YBJDB\WebHouse_Other.cs" />
-    <Compile Include="YBJ_NewWebDB\House.cs" />
-    <Compile Include="YBJ_NewWebDB\HousePic.cs" />
-    <Compile Include="YBJ_NewWebDB\House_Other.cs" />
-    <Compile Include="YBJ_NewWebDB\KXF_Staff.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data.Base\Data.Base.csproj">
+      <Project>{C35775D9-3DE9-4976-AFAA-1E89DEF56CFB}</Project>
+      <Name>Data.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data.Tool\Data.Tool.csproj">
       <Project>{17CF58B0-D4B1-4964-BC17-B675EA759AEA}</Project>
       <Name>Data.Tool</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CommonManager\" />
-    <Folder Include="YBJManager\" />
-    <Folder Include="YBJ_NewManager\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
